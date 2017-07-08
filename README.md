@@ -12,17 +12,17 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 - [Package Settings and Locations](#package-settings-and-locations)
 - [Markdown Highlighting and Spell Check](#markdown-highlighting-and-spell-check)
 - [Setting up Markdown Live Preview](#setting-up-markdown-live-preview)
-	- [Enable LiveReload via Settings](#enable-livereload-via-settings)
-	- [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
-	- [Configure Markdown Preview](#configure-markdown-preview)
-	- [Preview Files](#preview-files)
-	- [Preview Keybind](#preview-keybind)
+  - [Enable LiveReload via Settings](#enable-livereload-via-settings)
+  - [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
+  - [Configure Markdown Preview](#configure-markdown-preview)
+  - [Preview Files](#preview-files)
+  - [Preview Keybind](#preview-keybind)
 - [Markdown Table of Content](#markdown-table-of-content)
-	- [TOC Keybind](#toc-keybind)
+  - [TOC Keybind](#toc-keybind)
 - [Snippets vs. Completions](#snippets-vs-completions)
-	- [Snippet](#snippet)
-	- [Completions](#completions)
-	- [Snippet and Completion Triggers](#snippet-and-completion-triggers)
+  - [Snippet](#snippet)
+  - [Completions](#completions)
+  - [Snippet and Completion Triggers](#snippet-and-completion-triggers)
 
 <!-- /MarkdownTOC -->
 
@@ -81,13 +81,13 @@ Go to `Preferences > Settings - Syntax Specific` or edit package settings `Markd
 
 ``` json
 {
-	"extensions":
-	[
-		"md",
-		"markdown",
-		"moreextensions"
-	],
-	"spell_check": true	// enable spell check
+  "extensions":
+  [
+    "md",
+    "markdown",
+    "moreextensions"
+  ],
+  "spell_check": true // enable spell check
 }
 ```
 
@@ -102,10 +102,10 @@ Add the following to user settings for the LiveReload package `LiveReload.sublim
 
 ``` json
 {
-     "enabled_plugins": [
-     	"SimpleReloadPlugin",
-     	"SimpleRefreshDelay"	// use SimpleRefresh for reload without delay
-     ]
+  "enabled_plugins": [
+   "SimpleReloadPlugin",
+   "SimpleRefreshDelay" // use SimpleRefresh for reload without delay
+  ]
 }
 ```
 This way it does not need to be re-enabled after every start.
@@ -125,9 +125,9 @@ Add the following to `MarkdownPreview.sublime-settings`:
 
 ``` json
 {
-	"enable_autoreload": true,
-	"enabled_parsers": ["markdown"],
-	"enable_highlight": true
+  "enable_autoreload": true,
+  "enabled_parsers": ["markdown"],
+  "enable_highlight": true
 }
 ```
 
@@ -143,16 +143,16 @@ Add the following to `Default (Windows).sublime-keymap` or open it via `Preferen
 
 ``` json
 [
-	{
-	"keys": [
-		"alt+p"
-	],
-	"command": "markdown_preview",
-	"args": {
-		"target": "browser",
-		"parser": "markdown"
-	}
-	}
+  {
+  "keys": [
+    "alt+p"
+  ],
+  "command": "markdown_preview",
+  "args": {
+    "target": "browser",
+    "parser": "markdown"
+  }
+  }
 ]
 ```
 
@@ -163,10 +163,10 @@ Add the following to `Default (Windows).sublime-keymap` or open it via `Preferen
 
 ``` json
 {
-	"default_autoanchor": true,  // adds anchor to headings in not present
-  	"default_autolink": true,	 // make the ToC linkable
-  	"default_bracket": "round",  // use parentheses for link (e.g. [linktext](linkreference)) otherwise both will be brackets (square)
-  	"default_depth": 0  // 0 = unlimited depth
+  "default_autoanchor": true,  // adds anchor to headings in not present
+  "default_autolink": true,  // make the ToC linkable
+  "default_bracket": "round",  // use parentheses for link (e.g. [linktext](linkreference)) otherwise both will be brackets (square)
+  "default_depth": 0  // 0 = unlimited depth
 }
 ```
 3. In any markdown document, put the cursor where you want the T0C. Then `Tools > MarkdownTOC > Insert TOC`.
@@ -187,10 +187,10 @@ Add the following to the keymap `Default (Windows).sublime-keymap`:
 
 ``` json
 {
-	"keys": [
-		"alt+t"
-	],
-	"command": "markdowntoc_insert"  // update is markdowntoc_update
+  "keys": [
+    "alt+t"
+  ],
+  "command": "markdowntoc_insert"  // update is markdowntoc_update
 }
 ```
 
@@ -216,16 +216,16 @@ For example the Snippet for my Hugo shortcode `codecaption` [(link)][hugo-codeca
 
 ``` xml
 <snippet>
-	<content><![CDATA[{{< codecaption title="$1" lang="$2" >}}
+  <content><![CDATA[{{< codecaption title="$1" lang="$2" >}}
 ${3:default text}
 {{< /codecaption >}}
-		]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>codecap</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>text.html.markdown</scope>
-	<!-- Optional: Description to show in the menu -->
-    <description>Codecaption Hugo Shortcode</description>
+    ]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>codecap</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html.markdown</scope>
+  <!-- Optional: Description to show in the menu -->
+  <description>Codecaption Hugo Shortcode</description>
 </snippet>
 ```
 
@@ -237,13 +237,13 @@ Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
 
 ``` xml
 <snippet>
-	<content><![CDATA[{{< imgcap title="$1" src="/images/2017/${2:imagepath}" >}}]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>imgcap</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>text.html.markdown</scope>
-	<!-- Optional: Description to show in the menu -->
-    <description>Imagecaption Hugo Shortcode</description>
+  <content><![CDATA[{{ < imgcap title="$1" src="/images/2017/${2:imagepath}" >}}]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>imgcap</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html.markdown</scope>
+  <!-- Optional: Description to show in the menu -->
+  <description>Imagecaption Hugo Shortcode</description>
 </snippet>
 ```
 <a name="completions"></a>
@@ -262,8 +262,8 @@ Sample completion file for markdown for the same shortcodes. Note the triggers a
 
    "completions":
    [
-      { "trigger": "codecap\tCodecaption Hugo Shortcode", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
-      { "trigger": "imgcap\tImagecaption Hugo Shortcode", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
+      { "trigger": "codecap\tCodecaption Hugo Shortcode", "contents": "{{ < codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{ < /codecaption >}}" },
+      { "trigger": "imgcap\tImagecaption Hugo Shortcode", "contents": "{{ < imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
    ]
 }
 ```
