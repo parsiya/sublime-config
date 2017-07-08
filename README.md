@@ -21,8 +21,8 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 		- [TOC Keybind](#toc-keybind)
 - [Snippets vs. Completions](#snippets-vs-completions)
 	- [Snippet](#snippet)
-		- [How to Activate a Snippet](#how-to-activate-a-snippet)
 	- [Completions](#completions)
+	- [Snippet and Completion Triggers](#snippet-and-completion-triggers)
 
 <!-- /MarkdownTOC -->
 
@@ -246,14 +246,6 @@ Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
     <description>Imagecaption Hugo Shortcode</description>
 </snippet>
 ```
-
-<a name="how-to-activate-a-snippet"></a>
-### How to Activate a Snippet
-
-- Typing `codecap` and pressing `tab` will activate the snippet.
-- Typing `code` and `ctrl+space` will show it in the auto-complete menu.
-- Typing `snippet` in the command palette will show all snippets for the current scope along with their triggers.
-
 <a name="completions"></a>
 ## Completions
 I prefer completions because all can be in one file. For most purposes we can treat them like snippets. They are JSON files so escape `"` with `\"` and new line is `\n`.
@@ -262,7 +254,7 @@ Link to unofficial wiki: http://docs.sublimetext.info/en/latest/reference/comple
 
 Completions are stored in the `User` directory with extension `.sublime-completions`.
 
-Sample completion file for markdown for the same shortcodes. Note the triggers are the same and if you have both snippets and completions with the same trigger, snippets always have priority.
+Sample completion file for markdown for the same shortcodes. Note the triggers are the same as the ones in snippet examples above. Snippets always have priority over completions.
 
 ``` json
 {
@@ -270,13 +262,23 @@ Sample completion file for markdown for the same shortcodes. Note the triggers a
 
    "completions":
    [
-      { "trigger": "codecap", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
-      { "trigger": "imgcap", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
+      { "trigger": "codecap\tCodecaption Hugo Shortcode", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
+      { "trigger": "imgcap\tImagecaption Hugo Shortcode", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
    ]
 }
 ```
 
+Note the `trigger`, the first part is the actual trigger and everything after `\t` is the hint that appears in the autocompletion list similar to snippet descriptions.
+
 There are tons of `completion` files for different languages and frameworks online and in package control.
+
+<a name="snippet-and-completion-triggers"></a>
+## Snippet and Completion Triggers
+In short type the trigger (or parts of it if it's unique) and press `tab`. If there are snippets and completions with the same triggers, snippets always have priority.
+
+- Typing `codecap` and pressing `tab` will activate the snippet/completion.
+- Typing `code` and `ctrl+space` will show it in the auto-complete menu.
+- Typing `snippet` in the command palette will show all snippets for the current scope along with their triggers.
 
 <!-- Reference links -->
 [hugo-codecap-link]: https://github.com/parsiya/Hugo-Shortcodes#codecaption-codecaptionhtml
