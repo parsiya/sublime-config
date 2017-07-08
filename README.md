@@ -5,20 +5,24 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 
 <!-- MarkdownTOC -->
 
-- [Install Package Control](#install-package-control)
-- [Install Packages](#install-packages)
-- [Markdown Packages](#markdown-packages)
-- [How to Use the Config Files](#how-to-use-the-config-files)
-- [Package Settings and Locations](#package-settings-and-locations)
-- [Markdown Highlighting and Spell Check](#markdown-highlighting-and-spell-check)
-- [Setting up Markdown Live Preview](#setting-up-markdown-live-preview)
-	- [Enable LiveReload via Settings](#enable-livereload-via-settings)
-	- [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
-	- [Configure Markdown Preview](#configure-markdown-preview)
-	- [Preview Files](#preview-files)
-	- [Preview Keybind](#preview-keybind)
-- [Markdown Table of Content](#markdown-table-of-content)
-	- [TOC Keybind](#toc-keybind)
+	- [Install Package Control](#install-package-control)
+	- [Install Packages](#install-packages)
+	- [Markdown Packages](#markdown-packages)
+	- [How to Use the Config Files](#how-to-use-the-config-files)
+	- [Package Settings and Locations](#package-settings-and-locations)
+	- [Markdown Highlighting and Spell Check](#markdown-highlighting-and-spell-check)
+	- [Setting up Markdown Live Preview](#setting-up-markdown-live-preview)
+		- [Enable LiveReload via Settings](#enable-livereload-via-settings)
+		- [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
+		- [Configure Markdown Preview](#configure-markdown-preview)
+		- [Preview Files](#preview-files)
+		- [Preview Keybind](#preview-keybind)
+	- [Markdown Table of Content](#markdown-table-of-content)
+		- [TOC Keybind](#toc-keybind)
+- [Snippets vs. Completions](#snippets-vs-completions)
+	- [Snippet](#snippet)
+		- [How to Activate a Snippet](#how-to-activate-a-snippet)
+	- [Completions](#completions)
 
 <!-- /MarkdownTOC -->
 
@@ -45,6 +49,7 @@ Now you can install packages.
 4. Monokai Extended: Need this for the highlighting.
 5. LiveReload: For live markdown preview.
 6. MarkdownTOC: Automatically generate clickable table of contents to markdown documents.
+7. TOML: TOML highlighting.
 
 <a name="how-to-use-the-config-files"></a>
 ## How to Use the Config Files
@@ -188,3 +193,91 @@ Add the following to the keymap `Default (Windows).sublime-keymap`:
 	"command": "markdowntoc_insert"  // update is markdowntoc_update
 }
 ```
+
+<a name="snippets-vs-completions"></a>
+# Snippets vs. Completions
+Essentially both do the same.
+
+1. Snippets are XML while Completions are JSON.
+2. Snippets are easier to read because you can have new lines in `CDATA` tags while you have to escape doublequotes and use special characters for new lines (e.g. `\n`).
+3. Only one snippet is allowed per file while you can have multiple completions in one file.
+
+Mainly as a result of 3, I went with completions because it's just one file and easier to manage (although harder to read).
+
+<a name="snippet"></a>
+## Snippet
+`Tools > Developer > New Snippet` will create and open a template. Files are stored in the `User` directory similar to config files (although packages can have their own snippets). Extension for snippets is `sublime-snippet`.
+
+Unofficial documentation page: http://docs.sublimetext.info/en/latest/extensibility/snippets.html.
+
+Actual snippet is in the `content` tag which supports new lines inside `CDATA`.
+
+For example the Snippet for my Hugo shortcode `codecaption` [(link)][hugo-codecap-link].
+
+``` xml
+<snippet>
+	<content><![CDATA[{{< codecaption title="$1" lang="$2" >}}
+${3:default text}
+{{< /codecaption >}}
+		]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>codecap</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html.markdown</scope>
+	<!-- Optional: Description to show in the menu -->
+    <description>Codecaption Hugo Shortcode</description>
+</snippet>
+```
+
+`$1` means the cursor will be there after the snippet is activated, after typing and pressing `tab` we will jump to `$2`. `$3` has a default text which will be highlighted after cursor jumps to it and can be overwritten.
+
+`scope`is where the snippet will be active. Without a scope, it's active in all documents. To get the current scope press `ctrl+alt+shift+p` or through `Tools > Developer > Show Scope Name`.
+
+Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
+
+``` xml
+<snippet>
+	<content><![CDATA[{{< imgcap title="$1" src="/images/2017/${2:imagepath}" >}}]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>imgcap</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html.markdown</scope>
+	<!-- Optional: Description to show in the menu -->
+    <description>Imagecaption Hugo Shortcode</description>
+</snippet>
+```
+
+<a name="how-to-activate-a-snippet"></a>
+### How to Activate a Snippet
+
+- Typing `codecap` and pressing `tab` will activate the snippet.
+- Typing `code` and `ctrl+space` will show it in the auto-complete menu.
+- Typing `snippet` in the command palette will show all snippets for the current scope along with their triggers.
+
+<a name="completions"></a>
+## Completions
+I prefer completions because all can be in one file. For most purposes we can treat them like snippets. They are JSON files so escape `"` with `\"` and new line is `\n`.
+
+Link to unofficial wiki: http://docs.sublimetext.info/en/latest/reference/completions.html.
+
+Completions are stored in the `User` directory with extension `.sublime-completions`.
+
+Sample completion file for markdown for the same shortcodes. Note the triggers are the same and if you have both snippets and completions with the same trigger, snippets always have priority.
+
+``` json
+{
+   "scope": "text.html.markdown - source - meta.tag, punctuation.definition.tag.begin",
+
+   "completions":
+   [
+      { "trigger": "codecap", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
+      { "trigger": "imgcap", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
+   ]
+}
+```
+
+There are tons of `completion` files for different languages and frameworks online and in package control.
+
+<!-- Reference links -->
+[hugo-codecap-link]: https://github.com/parsiya/Hugo-Shortcodes#codecaption-codecaptionhtml
+[hugo-imgcap-link]:  https://github.com/parsiya/Hugo-Shortcodes#image-caption-imgcaphtml

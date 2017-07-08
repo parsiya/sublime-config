@@ -1,0 +1,9 @@
+{
+   "scope": "text.html.markdown - source - meta.tag, punctuation.definition.tag.begin",
+
+   "completions":
+   [
+      { "trigger": "codecap", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
+      { "trigger": "imgcap", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
+   ]
+}
