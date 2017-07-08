@@ -1,0 +1,16 @@
+{
+	"added_words":
+	[
+		"json",
+		"github",
+		"plugins",
+		"autoreload",
+		"livereload"
+	],
+	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Vintage"
+	]
+}
