@@ -25,7 +25,7 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 
 <a name="install-package-control"></a>
 ## Install Package Control
-Install package control from this link: https://packagecontrol.io/installation.
+Install package control using: https://packagecontrol.io/installation.
 
 <a name="install-packages"></a>
 ##  Install Packages
@@ -52,27 +52,27 @@ After installing packages, just copy the config files to the user package settin
 
 <a name="package-settings-and-locations"></a>
 ##  Package Settings and Locations
-Generally sublime and each package have two types of settings, default and user. User settings are used to override default ones. Both are plaintext files containing JSON objects.
+Generally sublime and each package have two types of settings, default and user. User settings are used to override default ones. Both are in JSON.
 
-Settings can be opened via `Preferences > Package Settings > Settings Default/User`. What I usually do is copy default to user and remove the settings I do not want to modify and modify the rest.
+Settings can be opened via `Preferences > Package Settings > Settings Default/User`. I usually copy from default file to user, remove the unneeded settings and override the rest.
 
 Package settings on Windows are at `%Appdata%\Sublime Text 3\Packages\User\package-name.sublime-settings`.
 
-Main settings can be overridden in `Preferences.sublime-settings` or use `Preferences > Settings`. This will open two files in one window. Left are the defaults settings and right is the user settings file. Copy from left pane and add to right one.
+Main settings can be overridden in `Preferences.sublime-settings` or accessed via `Preferences > Settings`. This will open two files in one window. Left are the defaults settings and right is the user settings file. Copy from left pane to the right one and override.
 
 <a name="markdown-highlighting-and-spell-check"></a>
 ##  Markdown Highlighting and Spell Check
 `Markdown Editing` has its own color scheme. I don't like it. Instead I use `Monokai Extended`. It can be selected from `Preferences > Color Scheme > Monokai Extended > Monokai Extended`.
 
-In order for this highlighting to kick in, the document type need to be set to `Markdown Extended`. This can be set by clicking on document type in bottom right and selecting it.
+In order for it to kick in, the document type need to be set to `Markdown Extended`. This can be set by clicking on document type (bottom right).
 
-Next you want to set all markdown files to be opened as this type for the syntax highlighting (including code blocks) to kick-in. This can be done by going to:
+Next you want to set all markdown files to be opened as `Markdown Extended` for syntax highlighting (including code blocks). This can be done by:
 
 - `View (menu) > Syntax > Open all with current extension as > Markdown Extended`.
 
-But it only sets it for the current extension (e.g. md).
+This method only sets it for the current extension (e.g. md).
 
-Go to `Preferences > Settings - Syntax Specific` and it will open a file in the right panel. You can also edit package settings `Markdown Extended.sublime-settings` and add the following:
+Go to `Preferences > Settings - Syntax Specific` or edit package settings `Markdown Extended.sublime-settings` and add the following:
 
 ``` json
 {
@@ -93,26 +93,24 @@ Note that `Markdown Editing` has added itself for `.mdown` files. You can just d
 
 <a name="enable-livereload-via-settings"></a>
 ###  Enable LiveReload via Settings
-Unfortunately LiveReload plugins need to be enabled every time Sublime is started. However we can do it through settings.
-
-Add the following to user settings for LiveReload package `LiveReload.sublime-settings`:
+Add the following to user settings for the LiveReload package `LiveReload.sublime-settings`:
 
 ``` json
 {
      "enabled_plugins": [
      	"SimpleReloadPlugin",
-     	"SimpleRefreshDelay"	// SimpleRefresh is the plugin for reload without delay
+     	"SimpleRefreshDelay"	// use SimpleRefresh for reload without delay
      ]
 }
 ```
-If you do not want to use settings you can do the following but it needs to be done every time.
+This way it does not need to be re-enabled after every start.
 
 <a name="enable-livereload-manually-need-to-do-after-every-sublime-launch"></a>
 ###  Enable LiveReload Manually (need to do after every Sublime launch)
 1. Open command palette and type `livereload`.
 2. Select `LiveReload: Enable/disable plug-ins`.
 3. Select `Enable - Simple Reload with delay(400ms)`.
-4. You should see a console message saying it was enabled. Note that it will say `Enable` whether it's enabled or not, if it's already enabled this will disable it so make sure to look at the console messages.
+4. You should see a console message saying it was enabled. Note that the menu will say `Enable` whether it's enabled or not, if it's already enabled choosing the menu will disable it so make sure to look at the console messages.
 
 <a name="configure-markdown-preview"></a>
 ###  Configure Markdown Preview
