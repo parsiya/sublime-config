@@ -5,20 +5,20 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 
 <!-- MarkdownTOC -->
 
-	- [Install Package Control](#install-package-control)
-	- [Install Packages](#install-packages)
-	- [Markdown Packages](#markdown-packages)
-	- [How to Use the Config Files](#how-to-use-the-config-files)
-	- [Package Settings and Locations](#package-settings-and-locations)
-	- [Markdown Highlighting and Spell Check](#markdown-highlighting-and-spell-check)
-	- [Setting up Markdown Live Preview](#setting-up-markdown-live-preview)
-		- [Enable LiveReload via Settings](#enable-livereload-via-settings)
-		- [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
-		- [Configure Markdown Preview](#configure-markdown-preview)
-		- [Preview Files](#preview-files)
-		- [Preview Keybind](#preview-keybind)
-	- [Markdown Table of Content](#markdown-table-of-content)
-		- [TOC Keybind](#toc-keybind)
+- [Install Package Control](#install-package-control)
+- [Install Packages](#install-packages)
+- [Markdown Packages](#markdown-packages)
+- [How to Use the Config Files](#how-to-use-the-config-files)
+- [Package Settings and Locations](#package-settings-and-locations)
+- [Markdown Highlighting and Spell Check](#markdown-highlighting-and-spell-check)
+- [Setting up Markdown Live Preview](#setting-up-markdown-live-preview)
+	- [Enable LiveReload via Settings](#enable-livereload-via-settings)
+	- [Enable LiveReload Manually \(need to do after every Sublime launch\)](#enable-livereload-manually-need-to-do-after-every-sublime-launch)
+	- [Configure Markdown Preview](#configure-markdown-preview)
+	- [Preview Files](#preview-files)
+	- [Preview Keybind](#preview-keybind)
+- [Markdown Table of Content](#markdown-table-of-content)
+	- [TOC Keybind](#toc-keybind)
 - [Snippets vs. Completions](#snippets-vs-completions)
 	- [Snippet](#snippet)
 	- [Completions](#completions)
@@ -195,7 +195,7 @@ Add the following to the keymap `Default (Windows).sublime-keymap`:
 ```
 
 <a name="snippets-vs-completions"></a>
-# Snippets vs. Completions
+## Snippets vs. Completions
 Essentially both do the same.
 
 1. Snippets are XML while Completions are JSON.
@@ -205,7 +205,7 @@ Essentially both do the same.
 Mainly as a result of 3, I went with completions because it's just one file and easier to manage (although harder to read).
 
 <a name="snippet"></a>
-## Snippet
+### Snippet
 `Tools > Developer > New Snippet` will create and open a template. Files are stored in the `User` directory similar to config files (although packages can have their own snippets). Extension for snippets is `sublime-snippet`.
 
 Unofficial documentation page: http://docs.sublimetext.info/en/latest/extensibility/snippets.html.
@@ -247,7 +247,7 @@ Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
 </snippet>
 ```
 <a name="completions"></a>
-## Completions
+### Completions
 I prefer completions because all can be in one file. For most purposes we can treat them like snippets. They are JSON files so escape `"` with `\"` and new line is `\n`.
 
 Link to unofficial wiki: http://docs.sublimetext.info/en/latest/reference/completions.html.
@@ -273,7 +273,7 @@ Note the `trigger`, the first part is the actual trigger and everything after `\
 There are tons of `completion` files for different languages and frameworks online and in package control.
 
 <a name="snippet-and-completion-triggers"></a>
-## Snippet and Completion Triggers
+### Snippet and Completion Triggers
 In short type the trigger (or parts of it if it's unique) and press `tab`. If there are snippets and completions with the same triggers, snippets always have priority.
 
 - Typing `codecap` and pressing `tab` will activate the snippet/completion.
