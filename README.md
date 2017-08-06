@@ -19,6 +19,7 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
   - [Preview Keybind](#preview-keybind)
 - [Markdown Table of Content](#markdown-table-of-content)
   - [TOC Keybind](#toc-keybind)
+- [Change Bold and Italic Markers](#change-bold-and-italic-markers)
 - [Snippets vs. Completions](#snippets-vs-completions)
   - [Snippet](#snippet)
   - [Completions](#completions)
@@ -192,6 +193,45 @@ Add the following to the keymap `Default (Windows).sublime-keymap`:
   ],
   "command": "markdowntoc_insert"  // update is markdowntoc_update
 }
+```
+
+<a name="change-bold-and-italic-markers"></a>
+## Change Bold and Italic Markers
+By default in markdown editing, bold marker is `__` and italic is `_`. I am more used to `**` for bold and `*` for italic.
+
+Simply add a file named `Bold and Italic Markers.tmPreferences` and put it in the usual User directory.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>Bold and Italic Markers</string>
+  <key>scope</key>
+  <string>text.html.markdown</string>
+  <key>settings</key>
+  <dict>
+    <key>shellVariables</key>
+    <array>
+      <dict>
+        <key>name</key>
+        <string>MD_BOLD_MARKER</string>
+        <key>value</key>
+        <string>**</string>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>MD_ITALIC_MARKER</string>
+        <key>value</key>
+        <string>*</string>
+      </dict>
+    </array>
+  </dict>
+  <key>uuid</key>
+  <string>E3F0F1B0-53C8-11E3-8F96-0800200C9A66</string>
+</dict>
+</plist>
 ```
 
 <a name="snippets-vs-completions"></a>
