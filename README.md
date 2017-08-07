@@ -277,7 +277,7 @@ Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
 
 ``` xml
 <snippet>
-  <content><![CDATA[{{ < imgcap title="$1" src="/images/2017/${2:imagepath}" >}}]]></content>
+  <content><![CDATA[{{< imgcap title="$1" src="/images/2017/${2:imagepath}" >}}]]></content>
   <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
   <tabTrigger>imgcap</tabTrigger>
   <!-- Optional: Set a scope to limit where the snippet will trigger -->
@@ -302,8 +302,8 @@ Sample completion file for markdown for the same shortcodes. Note the triggers a
 
    "completions":
    [
-      { "trigger": "codecap\tCodecaption Hugo Shortcode", "contents": "{{ < codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{ < /codecaption >}}" },
-      { "trigger": "imgcap\tImagecaption Hugo Shortcode", "contents": "{{ < imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
+      { "trigger": "codecap\tCodecaption Hugo Shortcode", "contents": "{{< codecaption title=\"$1\" lang=\"$2\" >}}\n${3:default text}\n{{< /codecaption >}}" },
+      { "trigger": "imgcap\tImagecaption Hugo Shortcode", "contents": "{{< imgcap title=\"$1\" src=\"/images/2017/${2:1.png}\" >}}" }
    ]
 }
 ```
