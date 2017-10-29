@@ -5,12 +5,22 @@
 		"github",
 		"plugins",
 		"autoreload",
-		"livereload"
+		"livereload",
+		"blog",
+		"internet",
+		"online"
 	],
-	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
 	"font_size": 13,
 	"ignored_packages":
 	[
 		"Vintage"
-	]
+	],
+	"rulers":
+	[
+		80
+	],
+	"tab_size": 4,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true
 }
