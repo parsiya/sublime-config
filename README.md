@@ -27,12 +27,11 @@ Below is my setup for reference. When I want to do it again in a year (or a new 
 
 <!-- /MarkdownTOC -->
 
-
-<a name="install-package-control"></a>
+<a id="install-package-control"></a>
 ## Install Package Control
 Install package control using: https://packagecontrol.io/installation.
 
-<a name="install-packages"></a>
+<a id="install-packages"></a>
 ##  Install Packages
 Now you can install packages.
 
@@ -41,7 +40,7 @@ Now you can install packages.
 3. Type the name of the package you are looking for to search for it.
 4. Select the package and press Enter.
 
-<a name="markdown-packages"></a>
+<a id="markdown-packages"></a>
 ##  Markdown Packages
 
 1. Markdown Extended: Syntax highlighting.
@@ -52,11 +51,11 @@ Now you can install packages.
 6. MarkdownTOC: Automatically generate clickable table of contents to markdown documents.
 7. TOML: TOML highlighting.
 
-<a name="how-to-use-the-config-files"></a>
+<a id="how-to-use-the-config-files"></a>
 ## How to Use the Config Files
 After installing packages, just copy the config files to the user package settings directory. On Windows it will be `"%Appdata%\Sublime Text 3\Packages\User\"` (don't forget the double quotes if you want to just paste it into the run prompt).
 
-<a name="package-settings-and-locations"></a>
+<a id="package-settings-and-locations"></a>
 ##  Package Settings and Locations
 Generally sublime and each package have two types of settings, default and user. User settings are used to override default ones. Both are in JSON.
 
@@ -66,7 +65,7 @@ Package settings on Windows are at `%Appdata%\Sublime Text 3\Packages\User\packa
 
 Main settings can be overridden in `Preferences.sublime-settings` or accessed via `Preferences > Settings`. This will open two files in one window. Left are the defaults settings and right is the user settings file. Copy from left pane to the right one and override.
 
-<a name="markdown-highlighting-and-spell-check"></a>
+<a id="markdown-highlighting-and-spell-check"></a>
 ##  Markdown Highlighting and Spell Check
 `Markdown Editing` has its own color scheme. I don't like it. Instead I use `Monokai Extended`. It can be selected from `Preferences > Color Scheme > Monokai Extended > Monokai Extended`.
 
@@ -94,10 +93,10 @@ Go to `Preferences > Settings - Syntax Specific` or edit package settings `Markd
 
 Note that `Markdown Editing` has added itself for `.mdown` files. You can just delete the file `Markdown.sublime-settings` and add the extensions in the previous file.
 
-<a name="setting-up-markdown-live-preview"></a>
+<a id="setting-up-markdown-live-preview"></a>
 ##  Setting up Markdown Live Preview
 
-<a name="enable-livereload-via-settings"></a>
+<a id="enable-livereload-via-settings"></a>
 ###  Enable LiveReload via Settings
 Add the following to user settings for the LiveReload package `LiveReload.sublime-settings`:
 
@@ -111,14 +110,14 @@ Add the following to user settings for the LiveReload package `LiveReload.sublim
 ```
 This way it does not need to be re-enabled after every start.
 
-<a name="enable-livereload-manually-need-to-do-after-every-sublime-launch"></a>
+<a id="enable-livereload-manually-need-to-do-after-every-sublime-launch"></a>
 ###  Enable LiveReload Manually (need to do after every Sublime launch)
 1. Open command palette and type `livereload`.
 2. Select `LiveReload: Enable/disable plug-ins`.
 3. Select `Enable - Simple Reload with delay(400ms)`.
 4. You should see a console message saying it was enabled. Note that the menu will say `Enable` whether it's enabled or not, if it's already enabled choosing the menu will disable it so make sure to look at the console messages.
 
-<a name="configure-markdown-preview"></a>
+<a id="configure-markdown-preview"></a>
 ###  Configure Markdown Preview
 Supposedly these two plugins work out of the box. It was not in my case. I had to add autoreload in markdown preview. I removed the `github` parser because it sends the markdown file to Github to be processed.
 
@@ -132,13 +131,13 @@ Add the following to `MarkdownPreview.sublime-settings`:
 }
 ```
 
-<a name="preview-files"></a>
+<a id="preview-files"></a>
 ###  Preview Files
 1. Open command palette and select `Markdown Preview: Preview in Browser`.
 2. A new browser window will open to display the rendered document.
 2. Browser should update after every save.
 
-<a name="preview-keybind"></a>
+<a id="preview-keybind"></a>
 ### Preview Keybind
 Add the following to `Default (Windows).sublime-keymap` or open it via `Preferences > Key Bindings`.
 
@@ -157,17 +156,17 @@ Add the following to `Default (Windows).sublime-keymap` or open it via `Preferen
 ]
 ```
 
-<a name="markdown-table-of-content"></a>
+<a id="markdown-table-of-content"></a>
 ##  Markdown Table of Content
 1. Install package `Markdown TOC`.
 2. Add the following user settings to `MarkdownTOC.sublime-settings`:
 
 ``` json
 {
-  "default_autoanchor": true,  // adds anchor to headings in not present
-  "default_autolink": true,  // make the ToC linkable
-  "default_bracket": "round",  // use parentheses for link (e.g. [linktext](linkreference)) otherwise both will be brackets (square)
-  "default_depth": 0  // 0 = unlimited depth
+  "defaults": {
+    "autoanchor": true,
+    "autolink": true,
+  }
 }
 ```
 3. In any markdown document, put the cursor where you want the T0C. Then `Tools > MarkdownTOC > Insert TOC`.
@@ -182,7 +181,7 @@ Add the following to `Default (Windows).sublime-keymap` or open it via `Preferen
 <!-- /MarkdownTOC -->
 ```
 
-<a name="toc-keybind"></a>
+<a id="toc-keybind"></a>
 ### TOC Keybind
 Add the following to the keymap `Default (Windows).sublime-keymap`:
 
@@ -195,7 +194,7 @@ Add the following to the keymap `Default (Windows).sublime-keymap`:
 }
 ```
 
-<a name="change-bold-and-italic-markers"></a>
+<a id="change-bold-and-italic-markers"></a>
 ## Change Bold and Italic Markers
 By default in markdown editing, bold marker is `__` and italic is `_`. I am more used to `**` for bold and `*` for italic.
 
@@ -234,7 +233,7 @@ Simply add a file named `Bold and Italic Markers.tmPreferences` and put it in th
 </plist>
 ```
 
-<a name="snippets-vs-completions"></a>
+<a id="snippets-vs-completions"></a>
 ## Snippets vs. Completions
 Essentially both do the same.
 
@@ -244,7 +243,7 @@ Essentially both do the same.
 
 Mainly as a result of 3, I went with completions because it's just one file and easier to manage (although harder to read).
 
-<a name="snippet"></a>
+<a id="snippet"></a>
 ### Snippet
 `Tools > Developer > New Snippet` will create and open a template. Files are stored in the `User` directory similar to config files (although packages can have their own snippets). Extension for snippets is `sublime-snippet`.
 
@@ -286,7 +285,7 @@ Same thing can be done for `imgcaption` [(link)][hugo-imgcap-link].
   <description>Imagecaption Hugo Shortcode</description>
 </snippet>
 ```
-<a name="completions"></a>
+<a id="completions"></a>
 ### Completions
 I prefer completions because all can be in one file. For most purposes we can treat them like snippets. They are JSON files so escape `"` with `\"` and new line is `\n`.
 
@@ -312,7 +311,7 @@ Note the `trigger`, the first part is the actual trigger and everything after `\
 
 There are tons of `completion` files for different languages and frameworks online and in package control.
 
-<a name="snippet-and-completion-triggers"></a>
+<a id="snippet-and-completion-triggers"></a>
 ### Snippet and Completion Triggers
 In short type the trigger (or parts of it if it's unique) and press `tab`. If there are snippets and completions with the same triggers, snippets always have priority.
 
