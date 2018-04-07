@@ -1,4 +1,10 @@
-# Setting up Sublime Text
+# Setting up Sublime Text - Deprecated
+This is deprecated, please see the config in my clone at:
+
+- [https://github.com/parsiya/Parsia-Clone/tree/master/clone/configs/sublime-text](https://github.com/parsiya/Parsia-Clone/tree/master/clone/configs/sublime-text)
+
+---
+
 I have moved from Atom to Sublime. Atom is a nice editor with a lot of features but it has a lot of performance issues for what I want to do.
 
 Below is my setup for reference. When I want to do it again in a year (or a new machine) I can just use everything here or just use the config files.
