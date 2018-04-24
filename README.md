@@ -1,7 +1,7 @@
 # Setting up Sublime Text - Deprecated
 This is deprecated, please see the config in my clone at:
 
-- [https://github.com/parsiya/Parsia-Clone/tree/master/clone/configs/sublime-text](https://github.com/parsiya/Parsia-Clone/tree/master/clone/configs/sublime-text)
+- https://github.com/parsiya/Parsia-Clone/tree/master/categories/configs/sublime-text
 
 ---
 
